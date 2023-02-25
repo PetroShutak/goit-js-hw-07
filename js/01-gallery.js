@@ -38,13 +38,36 @@ const instance = basicLightbox.create(
 
 function onImgClick(e) {
   e.preventDefault();
-  const datasetSource = e.target.dataset.source;
-  if (!datasetSource) return;
-  instance.element().querySelector("img").src = datasetSource;
+  const clickedElement = e.target;
+  if (clickedElement.nodeName !== "IMG") return;
+  const imgSource = clickedElement.getAttribute("src");
+  if (!imgSource) return;
+  instance.element().querySelector("img").src = imgSource;
   instance.show();
 }
 
-function onEscKeyPress(e) {
-  if (e.code !== "Escape") return;
-  instance.close();
-}
+// Second part of the task:
+// const instance = basicLightbox.create(
+//   `
+//   <img width="1280" height="auto" src="">`,
+//   {
+//     onShow: (instance) => {
+//       window.addEventListener("keydown", onEscKeyPress);
+//     },
+//     onClose: (instance) => {
+//       window.removeEventListener("keydown", onEscKeyPress);
+//     },
+//   }
+// );
+
+// function onImgClick(e) {
+//   e.preventDefault();
+//   const datasetSource = e.target.dataset.source;
+//   if (!datasetSource) return;
+//   instance.element().querySelector("img").src = datasetSource;
+//   instance.show();
+// }
+// function onEscKeyPress(e) {
+//   if (e.code !== "Escape") return;
+//   instance.close();
+// }
