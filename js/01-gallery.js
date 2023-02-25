@@ -45,7 +45,10 @@ function onImgClick(e) {
   instance.element().querySelector("img").src = imgSource;
   instance.show();
 }
-
+function onEscKeyPress(e) {
+  if (e.code !== "Escape") return;
+  instance.close();
+}
 // Second part of the task:
 // const instance = basicLightbox.create(
 //   `
