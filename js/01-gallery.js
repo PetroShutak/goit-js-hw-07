@@ -25,7 +25,7 @@ function createGalleryItemsMarkup(items) {
 
 const instance = basicLightbox.create(
   `
-  <img width="1280" height="auto" src="">`,
+  <img width="auto" height="auto" src="" style="max-width: 100%; max-height: 100%;">`,
   {
     onShow: (instance) => {
       window.addEventListener("keydown", onEscKeyPress);
@@ -40,11 +40,12 @@ function onImgClick(e) {
   e.preventDefault();
   const clickedElement = e.target;
   if (clickedElement.nodeName !== "IMG") return;
-  const imgSource = clickedElement.getAttribute("src");
+  const imgSource = clickedElement.getAttribute("data-source");
   if (!imgSource) return;
   instance.element().querySelector("img").src = imgSource;
   instance.show();
 }
+
 function onEscKeyPress(e) {
   if (e.code !== "Escape") return;
   instance.close();
