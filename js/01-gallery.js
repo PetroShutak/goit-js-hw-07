@@ -2,10 +2,10 @@ import { galleryItems } from "./gallery-items.js";
 
 // ========================================<witout ESC>==========================================
 // const galleryContainer = document.querySelector(".gallery");
-// const itemsMarkup = createGalleryItemsMarkup(galleryItems); 
-// galleryContainer.insertAdjacentHTML("beforeend", itemsMarkup); 
+// const itemsMarkup = createGalleryItemsMarkup(galleryItems);
+// galleryContainer.insertAdjacentHTML("beforeend", itemsMarkup);
 
-// galleryContainer.addEventListener("click", onImgClick); 
+// galleryContainer.addEventListener("click", onImgClick);
 
 // function createGalleryItemsMarkup(items) {
 //   return items
@@ -37,14 +37,8 @@ import { galleryItems } from "./gallery-items.js";
 // }
 // ========================================</witout ESC>==========================================
 
-
-// ========================================<with team>==========================================
+// // ========================================<with team>==========================================
 // const galleryRef = document.querySelector(".gallery");
-
-// // const galleryMarkup = galleryItems
-// //   .map(createGalleryItemMarkup)
-// //   .join('');
-
 // const createGalleryItemMarkup = ({ preview, original, description }) => {
 //   return `
 //     <li class="gallery__item">
@@ -65,6 +59,9 @@ import { galleryItems } from "./gallery-items.js";
 // const galleryMarkup = galleryItems.reduce((acc, item) => {
 //   return acc + createGalleryItemMarkup(item);
 // }, "");
+// // const galleryMarkup = galleryItems
+// //   .map(createGalleryItemMarkup)
+// //   .join('');
 
 // galleryRef.insertAdjacentHTML("beforeend", galleryMarkup);
 
@@ -72,6 +69,9 @@ import { galleryItems } from "./gallery-items.js";
 
 // function lightBox(event) {
 //   event.preventDefault();
+//   if (event.target.nodeName !== "IMG") {
+//     return;
+//   }
 //   const img = event.target.dataset.source;
 
 //   const instance = basicLightbox.create(`
@@ -86,10 +86,12 @@ import { galleryItems } from "./gallery-items.js";
 //     console.log(event.key, event.code);
 //     if (event.key === "Escape") {
 //       instance.close();
+//       galleryRef.removeEventListener("keydown", escClick);
 //     }
 //   }
 // }
-// ========================================</with team>==========================================
+
+// // ========================================</with team>==========================================
 
 // ========================================approved==========================================
 const galleryContainer = document.querySelector(".gallery");
@@ -142,6 +144,7 @@ function onEscKeyPress(e) {
   if (e.code !== "Escape") return;
   instance.close();
 }
+
 // ////////////////////////Second part of the task:////////////////////////////////////
 // const instance = basicLightbox.create(
 //   `
